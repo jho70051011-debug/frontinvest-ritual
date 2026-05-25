@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Front Invest — Ritual de Alta Performance</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f4f0;--bg2:#fff;--bg3:#eeede8;--bg4:#e5e3dc;
+  --border:rgba(0,0,0,0.07);--border2:rgba(0,0,0,0.13);
+  --text:#17170f;--text2:#6a6a60;--text3:#b0aea6;
+  --gold:#8a6a1c;--gold2:#b8912e;--gold3:#d4aa50;
+  --goldbg:#fdf5e0;--goldborder:#e8d080;
+  --blue:#1d3fa8;--green:#14532d;--red:#7f1d1d;
+  --r:14px;--rs:9px
+}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif}
+
+/* HERO */
+.hero{background:var(--text);color:var(--bg);padding:64px 32px 56px;text-align:center;position:relative;overflow:hidden}
+.hero-noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none}
+.hero-line{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold3),var(--gold))}
+.hero-tag{font-size:11px;letter-spacing:.15em;text-transform:uppercase;opacity:.45;margin-bottom:20px;font-weight:600}
+.hero-title{font-family:'DM Serif Display',serif;font-size:52px;line-height:1.05;margin-bottom:14px;letter-spacing:-.02em}
+.hero-title em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:16px;opacity:.55;max-width:460px;margin:0 auto;line-height:1.7;font-weight:400}
+.hero-meta{margin-top:28px;display:inline-flex;align-items:center;gap:24px;padding:12px 24px;border-radius:99px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);font-size:12px;opacity:.5}
+.hero-meta span{display:flex;align-items:center;gap:6px}
+
+.main{max-width:820px;margin:0 auto;padding:56px 24px 80px}
+
+/* INTRO */
+.intro{background:var(--goldbg);border:1px solid var(--goldborder);border-left:4px solid var(--gold2);border-radius:var(--r);padding:24px 28px;margin-bottom:48px}
+.intro p{font-size:15px;color:var(--gold);line-height:1.8}
+.intro strong{font-weight:700}
+
+/* DAY BLOCKS */
+.day-block{margin-bottom:48px}
+.day-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:22px}
+.day-badge{background:var(--text);color:var(--bg);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:99px;white-space:nowrap;margin-top:4px}
+.day-info{}
+.day-name{font-family:'DM Serif Display',serif;font-size:28px;letter-spacing:-.02em;line-height:1}
+.day-theme{font-size:13px;color:var(--text3);margin-top:4px}
+
+.msgs{display:flex;flex-direction:column;gap:10px}
+.msg{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:box-shadow .2s}
+.msg:hover{box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.msg-head{display:flex;align-items:center;gap:10px;padding:11px 16px;background:var(--bg3);border-bottom:1px solid var(--border)}
+.msg-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dot-m{background:#f59e0b}.dot-n{background:#3b82f6}.dot-e{background:#8b5cf6}
+.msg-time{font-size:12px;font-weight:700;color:var(--text2);font-family:'Outfit',sans-serif}
+.msg-type{font-size:11px;color:var(--text3)}
+.msg-body{padding:16px 18px}
+.msg-text{font-size:14px;line-height:1.8;color:var(--text);white-space:pre-line}
+.msg-foot{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-top:1px solid var(--border)}
+.msg-tip{font-size:11px;color:var(--text3);font-style:italic;flex:1;padding-right:12px}
+.copy-btn{background:var(--bg3);border:1px solid var(--border2);color:var(--text2);font-size:12px;font-weight:600;padding:6px 16px;border-radius:99px;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .15s;white-space:nowrap}
+.copy-btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+.copy-btn.ok{background:var(--green);color:white;border-color:var(--green)}
+
+/* DIVIDER */
+.divider{border:none;border-top:1px solid var(--border);margin:8px 0 48px}
+
+/* PRINCIPLES */
+.principles{background:var(--text);color:var(--bg);border-radius:var(--r);padding:36px 36px 32px;margin-bottom:48px}
+.pr-title{font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:24px;letter-spacing:-.02em}
+.pr-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pr-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--rs);padding:18px}
+.pr-num{font-family:'DM Serif Display',serif;font-size:28px;color:var(--gold3);margin-bottom:8px;line-height:1}
+.pr-t{font-size:14px;font-weight:700;margin-bottom:4px}
+.pr-sub{font-size:13px;opacity:.5;line-height:1.6}
+
+/* OBJECTIONS */
+.obj-block{margin-bottom:48px}
+.section-heading{font-family:'DM Serif Display',serif;font-size:28px;letter-spacing:-.02em;margin-bottom:6px}
+.section-sub-txt{font-size:14px;color:var(--text2);margin-bottom:22px}
+.obj{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:20px 22px;margin-bottom:10px}
+.obj-q{font-size:14px;font-weight:700;margin-bottom:10px;display:flex;align-items:flex-start;gap:8px}
+.obj-q::before{content:'?';width:20px;height:20px;border-radius:50%;background:var(--bg3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;margin-top:1px}
+.obj-a{font-size:13px;color:var(--text2);line-height:1.75;padding-left:28px;border-left:3px solid var(--gold2);margin-left:0}
+
+/* DREAMS */
+.dreams{background:var(--goldbg);border:1px solid var(--goldborder);border-radius:var(--r);padding:30px 30px 24px;margin-bottom:48px}
+.dream-title{font-family:'DM Serif Display',serif;font-size:24px;color:var(--gold);margin-bottom:4px}
+.dream-sub{font-size:13px;color:var(--gold2);margin-bottom:20px;opacity:.8}
+.dream-items{display:flex;flex-direction:column;gap:10px}
+.dream-item{background:var(--bg2);border-radius:var(--rs);padding:14px 16px;border:1px solid var(--goldborder)}
+.di-q{font-size:14px;font-weight:700;color:var(--gold);margin-bottom:4px}
+.di-a{font-size:12px;color:var(--gold2);opacity:.8}
+
+/* METAS TABLE */
+.metas-block{margin-bottom:48px}
+.metas-table{width:100%;border-collapse:collapse}
+.metas-table th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);font-weight:600;text-align:left;padding:10px 14px;background:var(--bg3);border-bottom:1px solid var(--border)}
+.metas-table td{padding:12px 14px;border-bottom:1px solid var(--border);font-size:14px}
+.metas-table tr:last-child td{border-bottom:none}
+.lv{font-size:11px;padding:4px 12px;border-radius:99px;font-weight:600}
+.lv-r{background:#fee2e2;color:var(--red)}.lv-a{background:#fef3c7;color:#92400e}.lv-g{background:#d1fae5;color:var(--green)}
+
+.toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:var(--bg);padding:10px 20px;border-radius:99px;font-size:13px;font-weight:600;opacity:0;transition:opacity .2s;pointer-events:none;z-index:100}
+.toast.show{opacity:1}
+
+@media(max-width:600px){.pr-grid{grid-template-columns:1fr}.hero-title{font-size:36px}.hero-meta{flex-direction:column;gap:10px;text-align:left}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-line"></div>
+  <div class="hero-tag">Front Invest · Playbook de Liderança</div>
+  <h1 class="hero-title">Ritual de<br><em>Alta Performance</em></h1>
+  <p class="hero-sub">O sistema completo de motivação diária para você e sua equipe construírem negócios milionários.</p>
+  <div class="hero-meta">
+    <span>📅 Segunda a sexta</span>
+    <span>💬 Mensagens prontas</span>
+    <span>🎯 Objeções respondidas</span>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="intro">
+    <p>Este playbook é o seu <strong>sistema de liderança diário</strong>. Times campeões não dependem de talento — dependem de <strong>rituais consistentes</strong>. Cada mensagem aqui foi pensada para criar urgência, despertar ambição e construir a cultura que transforma assessores em máquinas de resultado.<br><br>Copie direto para o WhatsApp, personalize com o nome do assessor. <strong>O segredo é a consistência: todo dia, sem falhar.</strong></p>
+  </div>
+
+  <!-- SEGUNDA -->
+  <div class="day-block">
+    <div class="day-head">
+      <span class="day-badge">Segunda</span>
+      <div class="day-info">
+        <div class="day-name">Ignição</div>
+        <div class="day-theme">Acender o motor da semana — urgência e volume</div>
+      </div>
+    </div>
+    <div class="msgs">
+      <div class="msg">
+        <div class="msg-head"><span class="msg-dot dot-m"></span><span class="msg-time">07h00 — Abertura</span><span class="msg-type" style="margin-left:auto">WhatsApp individual ou grupo</span></div>
+        <div class="msg-body"><div class="msg-text">Bom dia, time! 🔥
+
+Segunda-feira não é começo de semana — é começo de oportunidade.
+
+Enquanto o concorrente ainda está acordando, nós já estamos em campo.
+
+Cada ligação que você faz hoje pode abrir um ecossistema inteiro: conta, cartão, investimento, energia, consórcio... tudo dentro de um cliente só.
+
+A meta de hoje é simples: 10 contatos. Não é negociável.
+
+Vamos? 💥</div></div>
+        <div class="msg-foot"><span class="msg-tip">Envie antes das 7h30 — chega antes do cliente ligar primeiro</span><button class="copy-btn" onclick="copyM(this)">Copiar</button></div>
+      </div>
+      <div class="msg">
+        <div class="msg-head"><span class="msg-dot dot-n"></span><span class="msg-time">12h00 — Checagem</span><span class="msg-type" style="margin-left:auto">WhatsApp grupo</span></div>
+        <div class="msg-body"><div class="msg-text">Meio-dia! ☀️
+
+Rápida checagem: quantos contatos até agora?
+
+Quem já tem reunião marcada pra essa semana, manda aqui 🙋
+
+A tarde começa em 10 minutos. Bora dobrar o número.</div></div>
+        <div class="msg-foot"><span class="msg-tip">Visibilidade pública cria pressão positiva no grupo</span><button class="copy-btn" onclick="copyM(this)">Copiar</button></div>
+      </div>
+      <div class="msg">
+        <div class="msg-head"><span class="msg-dot dot-e"></span><span class="msg-time">18h30 — Encerramento</span><span class="msg-type" style="margin-left:auto">WhatsApp individual</span></div>
+        <div class="msg-body"><div class="msg-text">Como foi o primeiro dia? 💪
+
+Me passa o resumo: contatos feitos, reuniões marcadas.
+
+E me conta: qual foi a melhor conversa do dia? Aquele prospect que ficou interessado...
+
+Não esquece de gerar o código no sistema e me mandar. É o que nos deixa melhores toda semana.</div></div>
+        <div class="msg-foot"><span class="msg-tip">Pedir o número + a história identifica oportunidades ocultas</span><button class="copy-btn" onclick="copyM(this)">Copiar</button></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- TERÇA -->
+  <div class="day-block">
+    <div class="day-head">
+      <span class="day-badge">Terça</span>
+      <div class="day-info">
+        <div class="day-name">Foco</div>
+        <div class="day-theme">Converter contatos em reuniões agendadas</div>
+      </div>
+    </div>
+    <div class="msgs">
+      <div class="msg">
+        <div class="msg-head"><span class="msg-dot dot-m"></span><span class="msg-time">07h15 — Abertura</span><span class="msg-type" style="margin-left:auto">WhatsApp individual</span></div>
+        <div class="msg-body"><div class="msg-text">Bom dia! Terça é o dia do foco.
+
+A energia de segunda passou. Quem está aqui hoje está aqui por propósito.
+
+Sua única missão até o meio-dia: agendar 2 reuniões.
+
+Uma boa conversa de diagnóstico — perguntando sobre a conta de energia, os investimentos, a proteção da família — abre o cliente para 5 produtos de uma vez.
+
+O cliente certo está esperando você ligar. 📞</div></div>
+        <div class="msg-foot"><span class="msg-tip">Diagnóstico financeiro é a porta de entrada para o ecossistema completo</span><button class="copy-btn" onclick="copyM(this)">Copiar</button></div>
+      </div>
+      <div class="msg">
+        <div class="msg-head"><span class="msg-dot dot-n"></span><span class="msg-time">11h30 — Técnica do dia</span><span class="msg-type" style="margin-left:auto">WhatsApp grupo</span></div>
+        <div class="msg-body"><div class="msg-text">💡 Técnica do dia:
+
+Quando o cliente disser "não tenho tempo agora", responda:
+
+"Entendo! São só 15 minutos. Quero te mostrar como reduzir até 25% na conta de energia sem nenhum custo pra você. Quando fica melhor — amanhã às 9h ou quinta às 14h?"
+
+Dê sempre duas opções. Nunca pergunte "quando você pode?" — isso passa o controle pra ele.
+
+Quem usar essa técnica hoje me conta o resultado! 🎯</div></div>
+        <div class="msg-foot"><span class="msg-tip">Técnica compartilhada no grupo cria aprendizado coletivo</span><button class="copy-btn" onclick="copyM(this)">Copiar</button></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- QUARTA -->
+  <div class="day-block">
+    <div class="day-head">
+      <span class="day-badge">Quarta</span>
+      <div class="day-info">
+        <div class="day-name">Balanço</div>
+        <div class="day-theme">Virar o jogo ou abrir vantagem — sem meio-termo</div>
+      </div>
+    </div>
+    <div class="msgs">
+      <div class="msg">
+        <div class="msg-head"><span class="msg-dot dot-m"></span><span class="msg-time">07h00 — Abertura</span><span class="msg-type" style="margin-left:auto">WhatsApp grupo</span></div>
+        <div class="msg-body"><div class="msg-text">Bom dia! Chegamos na metade da semana. 📊
+
+Momento de honestidade:
+Se você está na meta → hoje você abre vantagem.
+Se você está atrás → hoje você vira o jogo.
+
+Não existe meio-termo em quarta.
+
+Me conta: onde estamos no funil?
+— Contatos essa semana?
+— Reuniões realizadas?
+— Propostas em aberto?
+
+Vamos resolver o que está travado juntos. 💪</div></div>
+        <div class="msg-foot"><span class="msg-tip">Pedir os números cria accountability — você identifica onde o funil trava</span><button class="copy-btn" onclick="copyM(this)">Copiar</button></div>
+      </div>
+      <div class="msg">
+        <div class="msg-head"><span class="msg-dot dot-n"></span><span class="msg-time">14h00 — Sonho grande</span><span class="msg-type" style="margin-left:auto">WhatsApp individual</span></div>
+        <div class="msg-body"><div class="msg-text">Uma pergunta rápida pra você:
+
+Quanto você quer ganhar por mês daqui a 12 meses?
+
+Não o que parece possível — o que você QUER de verdade.
+
+Me fala o número.
+
+Vou te mostrar exatamente quantos clientes e quantas reuniões por semana te levam até lá. A matemática existe. O caminho também. 🎯</div></div>
+        <div class="msg-foot"><span class="msg-tip">Conectar meta de ganho com atividade diária é o maior motivador</span><button class="copy-btn" onclick="copyM(this)">Copiar</button></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- QUINTA -->
+  <div class="day-block">
+    <div class="day-head">
+      <span class="day-badge">Quinta</span>
+      <div class="day-info">
+        <div class="day-name">Colheita</div>
+        <div class="day-theme">Fechar o que está em aberto — urgência máxima</div>
+      </div>
+    </div>
+    <div class="msgs">
+      <div class="msg">
+        <div class="msg-head"><span class="msg-dot dot-m"></span><span class="msg-time">07h30 — Abertura</span><span class="msg-type" style="margin-left:auto">WhatsApp individual</span></div>
+        <div class="msg-body"><div class="msg-text">Quinta é o melhor dia para fechar. 🏆
+
+O cliente já processou a proposta. O fim de semana está chegando. A urgência aumenta.
+
+Sua lista de hoje:
+✅ Ligar para todos os prospects em aberto
+✅ Follow-up de quem pediu "pra pensar"
+✅ Reativar quem sumiu depois da primeira reunião
+
+Script para reativar:
+"Oi [nome], passei pra ver se surgiu alguma dúvida sobre o que conversamos. Lembrei de um detalhe que queria te mostrar..."
+
+Simples. Humano. Eficiente. Bora fechar! 💰</div></div>
+        <div class="msg-foot"><span class="msg-tip">Quinta tem a maior taxa de fechamento — use isso estrategicamente</span><button class="copy-btn" onclick="copyM(this)">Copiar</button></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SEXTA -->
+  <div class="day-block">
+    <div class="day-head">
+      <span class="day-badge">Sexta</span>
+      <div class="day-info">
+        <div class="day-name">Celebração</div>
+        <div class="day-theme">Fechar a semana e plantar a próxima</div>
+      </div>
+    </div>
+    <div class="msgs">
+      <div class="msg">
+        <div class="msg-head"><span class="msg-dot dot-m"></span><span class="msg-time">08h00 — Abertura</span><span class="msg-type" style="margin-left:auto">WhatsApp grupo</span></div>
+        <div class="msg-body"><div class="msg-text">Sexta! Último sprint. 🚀
+
+Hoje fazemos duas coisas:
+1. Fechamos o que ficou em aberto
+2. Plantamos sementes para segunda — peça indicações hoje
+
+Depois das 17h a gente faz o balanço da semana. 
+
+O time que revisa aprende. O time que aprende cresce.
+
+Últimas horas. Vamos com tudo! 💪</div></div>
+        <div class="msg-foot"><span class="msg-tip">Indicação pedida na sexta é contato quente na segunda</span><button class="copy-btn" onclick="copyM(this)">Copiar</button></div>
+      </div>
+      <div class="msg">
+        <div class="msg-head"><span class="msg-dot dot-e"></span><span class="msg-time">17h30 — Fechamento semanal</span><span class="msg-type" style="margin-left:auto">WhatsApp grupo</span></div>
+        <div class="msg-body"><div class="msg-text">Semana encerrada! 🏁
+
+Me mandem o balanço:
+📞 Total de contatos:
+🤝 Reuniões realizadas:
+✅ Fechamentos:
+💰 Volume captado:
+
+Quem teve o melhor resultado essa semana, me conta o que fez diferente. O time inteiro aprende.
+
+Descansem bem. Na segunda voltamos mais fortes. Valeu, time! 🙏</div></div>
+        <div class="msg-foot"><span class="msg-tip">Celebre publicamente — reconhecimento é o combustível da recorrência</span><button class="copy-btn" onclick="copyM(this)">Copiar</button></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PRINCIPLES -->
+  <div class="principles">
+    <div class="pr-title">Os 6 princípios do líder Front Invest</div>
+    <div class="pr-grid">
+      <div class="pr-item"><div class="pr-num">01</div><div class="pr-t">Consistência vence talento</div><div class="pr-sub">O assessor mediano que prospecta todo dia bate o gênio que prospecta quando tem vontade.</div></div>
+      <div class="pr-item"><div class="pr-num">02</div><div class="pr-t">Venda o ecossistema</div><div class="pr-sub">Uma conta aberta pode virar cartão, energia, previdência e consórcio. Cada cliente vale 5x mais.</div></div>
+      <div class="pr-item"><div class="pr-num">03</div><div class="pr-t">Reconheça em público, corrija em privado</div><div class="pr-sub">Elogio no grupo cria cultura. Feedback individual preserva a dignidade e acelera a melhora.</div></div>
+      <div class="pr-item"><div class="pr-num">04</div><div class="pr-t">Conecte meta a sonho</div><div class="pr-sub">Assessor que trabalha por medo chega no básico. Assessor que trabalha por sonho não tem teto.</div></div>
+      <div class="pr-item"><div class="pr-num">05</div><div class="pr-t">Dados eliminam achismo</div><div class="pr-sub">Se não está fechando, o problema está em um ponto do funil. Os registros diários mostram onde.</div></div>
+      <div class="pr-item"><div class="pr-num">06</div><div class="pr-t">Você é o produto principal</div><div class="pr-sub">O cliente compra você antes de comprar qualquer produto. Sua energia e convicção fecham o negócio.</div></div>
+    </div>
+  </div>
+
+  <!-- OBJEÇÕES -->
+  <div class="obj-block">
+    <div class="section-heading">Objeções — como responder</div>
+    <p class="section-sub-txt">Treine seu assessor com essas respostas até virar automático.</p>
+    <div class="obj"><div class="obj-q">Já tenho banco, não quero trocar.</div><div class="obj-a">Perfeito — não precisa trocar nada. A Front Invest funciona em paralelo. A maioria dos clientes mantém o banco de sempre e usa nosso ecossistema para investir melhor, ter limite maior e pagar menos na energia. São universos diferentes.</div></div>
+    <div class="obj"><div class="obj-q">Não tenho dinheiro para investir agora.</div><div class="obj-a">Entendo! Por isso o melhor ponto de entrada hoje é o mercado livre de energia — sem custo nenhum, você reduz até 25% na conta que já paga todo mês. É dinheiro que fica no bolso imediatamente. Posso te mostrar em 10 minutos?</div></div>
+    <div class="obj"><div class="obj-q">Deixa eu pensar e te retorno.</div><div class="obj-a">Claro! Só me fala: o que ficou de dúvida? Às vezes é uma informação simples que resolve na hora. Se não for, combinamos um horário e eu trago tudo certinho pra você.</div></div>
+    <div class="obj"><div class="obj-q">Não confio em investimentos, já perdi dinheiro.</div><div class="obj-a">Faz todo sentido ter essa cautela. Temos renda fixa com proteção total do capital — você sabe exatamente quanto vai receber no vencimento. Posso te mostrar o que rende acima do CDI com segurança total?</div></div>
+    <div class="obj"><div class="obj-q">Já tenho assessor de investimentos.</div><div class="obj-a">Ótimo! Seu assessor provavelmente cuida bem dos investimentos. O que fazemos diferente é o ecossistema completo: energia, seguros, consórcio, crédito... Às vezes faz sentido ter os dois. Posso mostrar onde tem espaço para otimizar?</div></div>
+  </div>
+
+  <!-- DREAMS -->
+  <div class="dreams">
+    <div class="dream-title">Perguntas que despertam sonhos</div>
+    <div class="dream-sub">Use nas reuniões 1:1 com seu assessor. Conectar trabalho a sonho é o maior motivador.</div>
+    <div class="dream-items">
+      <div class="dream-item"><div class="di-q">"Quanto você quer ganhar por mês daqui a 1 ano? Me fala o número real, não o conservador."</div><div class="di-a">→ Calcule juntos quantos clientes e fechamentos por mês chegam lá. A matemática surpreende.</div></div>
+      <div class="dream-item"><div class="di-q">"Se dinheiro não fosse problema, o que você faria diferente na sua vida nos próximos 6 meses?"</div><div class="di-a">→ Essa resposta vira âncora emocional nos dias difíceis. Lembre sempre que ele mencionou.</div></div>
+      <div class="dream-item"><div class="di-q">"Qual seria o fechamento que, se acontecesse esse mês, mudaria sua confiança para sempre?"</div><div class="di-a">→ Identifique o cliente dos sonhos e ajude ele a ir atrás com estratégia.</div></div>
+      <div class="dream-item"><div class="di-q">"O que precisa acontecer para você trazer um cliente com volume acima de R$500 mil este trimestre?"</div><div class="di-a">→ Faz ele pensar grande. Quem mira na lua não cai no chão.</div></div>
+    </div>
+  </div>
+
+  <!-- METAS -->
+  <div class="metas-block">
+    <div class="section-heading">Metas por nível de assessor</div>
+    <p class="section-sub-txt">Referência para definir expectativas e avaliar evolução.</p>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+      <table class="metas-table">
+        <thead><tr><th>Nível</th><th>Contatos/dia</th><th>Reuniões/semana</th><th>Fechamentos/mês</th><th>Volume/mês</th></tr></thead>
+        <tbody>
+          <tr><td><span class="lv lv-r">Iniciante</span></td><td>5–8</td><td>2–4</td><td>1–3</td><td>até R$50k</td></tr>
+          <tr><td><span class="lv lv-a">Em desenvolvimento</span></td><td>8–12</td><td>4–7</td><td>3–6</td><td>R$50k–R$200k</td></tr>
+          <tr><td><span class="lv lv-g">Alta performance</span></td><td>12–20</td><td>7–12</td><td>6–15</td><td>R$200k–R$1M+</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast">✅ Mensagem copiada!</div>
+
+<script>
+function copyM(btn){
+  const text=btn.closest('.msg').querySelector('.msg-text').textContent;
+  navigator.clipboard.writeText(text).then(()=>{
+    btn.textContent='✅ Copiado!';btn.classList.add('ok');
+    const t=document.getElementById('toast');t.classList.add('show');
+    setTimeout(()=>{btn.textContent='Copiar';btn.classList.remove('ok');t.classList.remove('show');},2000);
+  });
+}
+</script>
+</body>
+</html>
